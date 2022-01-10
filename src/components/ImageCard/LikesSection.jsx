@@ -1,3 +1,5 @@
+import "../ImageCard/LikesSection.css"
+
 function LikesSection(props) {
 
     const {postLikes} = props 

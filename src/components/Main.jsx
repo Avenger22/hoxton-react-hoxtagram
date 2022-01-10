@@ -1,5 +1,6 @@
 import PostForm from './PostForm/PostForm'
 import ImageCard from './ImageCard/ImageCard'
+import "../components/Main.css"
 
 function Main(props) {
 

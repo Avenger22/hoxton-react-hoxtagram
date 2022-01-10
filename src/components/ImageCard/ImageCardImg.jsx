@@ -1,3 +1,5 @@
+import "../ImageCard/ImageCardImg.css"
+
 function ImageCardImg(props) {
 
     const {postImage} = props  

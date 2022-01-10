@@ -1,0 +1,7 @@
+.image-card {
+    width: 350px;
+    border: 1px solid #00000020;
+    border-radius: 2px;
+    text-align: left;
+    background-color: white;
+}

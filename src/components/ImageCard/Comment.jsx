@@ -1,3 +1,6 @@
+import "../ImageCard/Comment.css"
+import "../ImageCard/Comments.css"
+
 function Comment(props) {
 
     const {content} = props

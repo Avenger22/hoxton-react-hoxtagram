@@ -1,3 +1,5 @@
+import "../ImageCard/ImageCardTitle.css"
+
 function ImageCardTitle(props) {
 
     const {postTitle} = props  

@@ -1,4 +1,5 @@
 import Comment from './Comment'
+import "../ImageCard/Comments.css"
 
 function Comments(props) {
     

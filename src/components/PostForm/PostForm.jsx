@@ -1,3 +1,5 @@
+import "../PostForm/PostForm.css"
+
 function PostForm() {
 
     return (

@@ -1,3 +1,5 @@
+import '../components/ImageLogo.css'
+
 function ImageLogo() {
 
     return (
