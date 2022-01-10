@@ -1,12 +1,21 @@
 import Comment from './Comment'
 
-function Comments() {
+function Comments(props) {
+    
+    const {postComments} = props
     
     return (
 
         <ul className="comments">
             
-            <Comment />
+            {postComments.map(comment => 
+                
+                <Comment 
+                    key = {`post with id: ${comment.id}`}
+                    content = {comment.content}
+                />
+                
+            )}
 
         </ul>
 

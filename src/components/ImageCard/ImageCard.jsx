@@ -3,16 +3,29 @@ import ImageCardImg from './ImageCardImg'
 import LikesSection from './LikesSection'
 import Comments from './Comments'
 
-function ImageCard() {
+function ImageCard(props) {
+
+    const {post} = props  
 
     return (
 
         <article className="image-card">
 
-            <ImageCardTitle />
-            <ImageCardImg />
-            <LikesSection />
-            <Comments />
+            <ImageCardTitle 
+                postTitle = {post.title}
+            />
+
+            <ImageCardImg 
+                postImage = {post.image}
+            />
+
+            <LikesSection 
+                postLikes = {post.likes}
+            />
+
+            <Comments 
+                postComments = {post.comments}
+            />
 
         </article>
 

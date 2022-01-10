@@ -165,3 +165,9 @@ img {
 .post-form .post-form-btn {
   padding: 5px 5px
 }
+
+.article-wrapper {
+  display: grid;
+  grid-template-rows: auto;
+  grid-gap: 50px;
+}

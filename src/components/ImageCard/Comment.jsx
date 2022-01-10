@@ -1,8 +1,10 @@
-function Comment() {
+function Comment(props) {
+
+    const {content} = props
 
     return (
 
-        <li>Get rid of these comments</li>
+        <li>{content}</li>
 
     )
 

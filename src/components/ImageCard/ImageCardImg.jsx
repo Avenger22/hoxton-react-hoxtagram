@@ -1,8 +1,10 @@
-function ImageCardImg() {
+function ImageCardImg(props) {
+
+    const {postImage} = props  
 
     return (
 
-        <img src="./assets/image-placeholder.jpg" className="image" />
+        <img src={postImage} className="image" />
 
     )
 

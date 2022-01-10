@@ -1,8 +1,10 @@
-function ImageCardTitle() {
+function ImageCardTitle(props) {
+
+    const {postTitle} = props  
 
     return (
 
-        <h2 className="title">Title of image goes here</h2>
+        <h2 className="title">{postTitle}</h2>
 
     )
 

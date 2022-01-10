@@ -1,14 +1,28 @@
 import PostForm from './PostForm/PostForm'
 import ImageCard from './ImageCard/ImageCard'
 
-function Main() {
+function Main(props) {
 
+    const {filteredPosts} = props
+    
     return (
 
         <section className="image-container">
 
             <PostForm />
-            <ImageCard />
+
+            <div className='article-wrapper'>
+
+                {filteredPosts.map(post => 
+
+                    <ImageCard 
+                        key = {post.id}
+                        post = {post}
+                    />
+                    
+                )}
+
+            </div>
             
         </section>
 
