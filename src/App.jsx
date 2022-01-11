@@ -62,21 +62,6 @@ function App () {
 
   }
 
-  // function addCommentFromServer(imageIdParam, contentParam) {
-
-  //   return fetch(`http://localhost:8000/comments`, {
-      
-  //       method: 'POST',
-  //       headers: {
-  //           'Content-Type': 'application/json'
-  //       },
-
-  //       body: JSON.stringify({ content: contentParam, imageId: imageIdParam })
-
-  //   }
-
-  // )}
-
   function deleteCommentFromServer(comment) {
     
     fetch(`http://localhost:8000/comments/${comment.id}`, {
@@ -100,7 +85,6 @@ function App () {
     setPosts(updatedPost)
 
   }
-
 
   function addPost(formTitle, formImage, formLikes) {
 
@@ -138,56 +122,6 @@ function App () {
     )
 
   }
-
-
-  // function addComment(imageIdParam, contentParam, post) {
-
-  //   const newComment = {
-
-  //     comments: [
-  //       {
-  //         imageId: imageIdParam,
-  //         content: contentParam
-  //       }
-  //     ]
-
-  //   }
-    
-  //   fetch(`http://localhost:8000/comments/`, {
-  //       method: 'POST',
-  //       headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-
-  //     body: JSON.stringify(newComment)
-  //   })
-
-  //   .then(responseItem => responseItem.json())
-  //   .then(responseJsonArray => {
-
-  //     // response will contain the new item with the ID
-  //     const updatedComments = [...post.comments, responseJsonArray]
-  //     setPosts(updatedComments)
-
-  //   })
-
-  // }
-
-  
-  // function addComment(imageIdParam, contentParam) {
-
-  //   return fetch(`http://localhost:8000/comments`, {
-      
-  //     method: 'POST',
-  //     headers: {
-  //         'Content-Type': 'application/json'
-  //     },
-
-  //     body: JSON.stringify({ content: contentParam, imageId: imageIdParam })
-
-  //   }) 
-
-  // }
 
   function deleteComment(comment) {
 
