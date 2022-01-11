@@ -1,11 +1,12 @@
 import PostForm from './PostForm/PostForm'
-import ImageCard from './ImageCard/ImageCard'
+import ArticleWrapperImages from './ImageCard/ArticleWrapperImages'
 import SearchForm from '../components/SearchForm/SearchForm'
 import "../components/Main.css"
 
 function Main(props) {
 
-    const {filteredPosts, likeImage, addPost, setSearchItem, addComment} = props
+    const {filteredPosts, likeImage, addPost, setSearchItem, 
+        addComment, deleteComment, deletePost} = props
     
     return (
 
@@ -19,7 +20,16 @@ function Main(props) {
                 addPost = {addPost}
             />
 
-            <div className='article-wrapper'>
+            <ArticleWrapperImages 
+                filteredPosts = {filteredPosts}
+                likeImage = {likeImage}
+                addComment = {addComment}
+
+                deleteComment = {deleteComment}
+                deletePost = {deletePost}
+            />
+
+            {/* <div className='article-wrapper'>
 
                 {filteredPosts.map(post => 
 
@@ -29,11 +39,14 @@ function Main(props) {
 
                         likeImage = {likeImage}
                         addComment = {addComment}
+
+                        deleteComment = {deleteComment}
+                        deletePost = {deletePost}
                     />
                     
                 )}
 
-            </div>
+            </div> */}
             
         </section>
 

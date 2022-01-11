@@ -3,15 +3,17 @@ import "../ImageCard/Comments.css"
 
 function Comment(props) {
 
-    const {content} = props
+    const  {deleteComment, comment} = props
 
     return (
 
         <li>
             
-            {content}
+            {comment.content}
 
-            <button>
+            <button onClick={function() {
+                deleteComment(comment)
+            }}>
                 X
             </button>
         

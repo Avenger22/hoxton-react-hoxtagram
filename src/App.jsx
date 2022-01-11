@@ -16,16 +16,32 @@ function App () {
 
 
   // #region 'Server Functions'
-  useEffect(() => {
+  function getPostsFromServer() {
+
     fetch('http://localhost:8000/images')
       .then(resp => resp.json())
       .then(postsFromServer => setPosts(postsFromServer)) //we update the state then react rerenders auto
-  }, [])
-  // #endregion
 
+  }
 
-  // #region 'Helper Functions'
-  function likeImage(post) {
+  useEffect(getPostsFromServer, [])
+
+  function newPostInServer(newPost) {
+
+    return fetch('http://localhost:8000/images', {
+        method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+        },
+
+        body: JSON.stringify(newPost)
+      })
+
+      .then(responseItem => responseItem.json())
+
+  }
+
+  function likeImageOnServer(post) {
 
     // update the server
     fetch(`http://localhost:8000/images/${post.id}`, {
@@ -36,42 +52,70 @@ function App () {
       body: JSON.stringify({ likes: post.likes + 1 })
     })
 
+  }
+
+  function deletePostFromServer(postId) {
+
+    fetch(`http://localhost:8000/images/${postId}`, {
+      method: "DELETE"
+    });
+
+  }
+
+  function deleteCommentFromServer(comment) {
+    
+    fetch(`http://localhost:8000/comments/${comment.id}`, {
+      method: 'DELETE'
+    })
+
+  }
+  // #endregion
+
+
+  // #region 'Helper Functions'
+  function likeImage(post) {
+
+    likeImageOnServer(post)
+
     // update state
     const updatedPost = JSON.parse(JSON.stringify(filteredPosts))
     const match = updatedPost.find(target => target.id === post.id)
 
     match.likes++
     setPosts(updatedPost)
+
   }
 
-  function addPost(formTitle, formImage, formLikes, formComment) {
+
+  function addPost(formTitle, formImage, formLikes) {
 
     const newPost = {
       title: formTitle,
       image: formImage,
       likes: formLikes,
-      comments: [formComment]
+      comments: []
     }
     
-    fetch('http://localhost:8000/images', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-      },
-
-      body: JSON.stringify(newPost)
-    })
-
-    .then(responseItem => responseItem.json())
-    .then(responseJsonArray => {
-
-      // response will contain the new item with the ID
+    newPostInServer(newPost).then(responseJsonArray => {
+      
       const updatedPosts = [...posts, responseJsonArray]
       setPosts(updatedPosts)
 
     })
 
   }
+
+  function deletePost(post) {
+
+    deletePostFromServer(post)
+
+    let updatedPosts = JSON.parse(JSON.stringify(posts));
+
+    updatedPosts = updatedPosts.filter(post => post.id !== post.id)
+    setPosts(updatedPosts);
+
+  }
+
 
   function searchPosts(filteredPosts) {
 
@@ -81,29 +125,52 @@ function App () {
 
   }
 
-  function addComment(formComment, post) {
 
-    const newComment = {
-      comments: [formComment]
-    }
+  // function addComment(imageIdParam, contentParam, post) {
+
+  //   const newComment = {
+
+  //     comments: [
+  //       {
+  //         imageId: imageIdParam,
+  //         content: contentParam
+  //       }
+  //     ]
+
+  //   }
     
-    fetch(`http://localhost:8000/images/{post.id}/comments/`, {
-        method: 'POST',
-        headers: {
-        'Content-Type': 'application/json'
-      },
+  //   fetch(`http://localhost:8000/comments/`, {
+  //       method: 'POST',
+  //       headers: {
+  //       'Content-Type': 'application/json'
+  //     },
 
-      body: JSON.stringify(newComment)
-    })
+  //     body: JSON.stringify(newComment)
+  //   })
 
-    .then(responseItem => responseItem.json())
-    .then(responseJsonArray => {
+  //   .then(responseItem => responseItem.json())
+  //   .then(responseJsonArray => {
 
-      // response will contain the new item with the ID
-      const updatedComments = [...post.comments, responseJsonArray]
-      setPosts(updatedComments)
+  //     // response will contain the new item with the ID
+  //     const updatedComments = [...post.comments, responseJsonArray]
+  //     setPosts(updatedComments)
 
-    })
+  //   })
+
+  // }
+
+  function deleteComment(comment) {
+
+    deleteCommentFromServer(comment) //delete from the server
+
+    //delete from the state and APP
+    let updatedPosts = JSON.parse(JSON.stringify(posts));
+    let findingIndex = updatedPosts.findIndex(target => target.id === comment.imageId)
+
+    let updatedComments = updatedPosts[findingIndex].comments.filter(target => target.id !== comment.id);
+
+    updatedPosts[findingIndex].comments = updatedComments;
+    setPosts(updatedPosts);
 
   }
   // #endregion
@@ -132,7 +199,9 @@ function App () {
         addPost = {addPost}
         setSearchItem = {setSearchItem}
 
-        addComment = {addComment}
+        // addComment = {addComment}
+        deleteComment = {deleteComment}
+        deletePost = {deletePost}
       />
       
     </div>

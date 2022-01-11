@@ -3,7 +3,7 @@ import "../ImageCard/Comments.css"
 
 function Comments(props) {
     
-    const {postComments, addComment, post} = props
+    const {postComments, addComment, post, deleteComment} = props
     
     return (
 
@@ -16,7 +16,7 @@ function Comments(props) {
                     const comment = e.target.addComment.value
 
                     console.log(comment)
-                    addComment(comment, post)
+                    // addComment(comment, post.id, post)
                 }}
             >
 
@@ -32,7 +32,8 @@ function Comments(props) {
                 
                 <Comment 
                     key = {`post with id: ${comment.id}`}
-                    content = {comment.content}
+                    deleteComment = {deleteComment}
+                    comment = {comment}
                 />
                 
             )}
