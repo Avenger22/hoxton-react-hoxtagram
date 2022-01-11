@@ -54,20 +54,22 @@ function App () {
       comments: [formComment]
     }
     
-    // update the server
     fetch('http://localhost:8000/images', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
-      },
+      'Content-Type': 'application/json'
+    },
 
-      body: JSON.stringify(newPost)
+    body: JSON.stringify(newPost)
+    })
+    .then(responseItem => responseItem.json())
+    .then(responseJsonArray => {
+
+      // response will contain the new item with the ID
+      const updatedPosts = [...posts, responseJsonArray]
+      setPosts(updatedPosts)
 
     })
-
-    //update the state
-    const updatedPosts = [...posts, newPost]
-    setPosts(updatedPosts)
 
   }
   // #endregion
