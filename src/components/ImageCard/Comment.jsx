@@ -7,7 +7,15 @@ function Comment(props) {
 
     return (
 
-        <li>{content}</li>
+        <li>
+            
+            {content}
+
+            <button>
+                X
+            </button>
+        
+        </li>
 
     )
 

@@ -5,7 +5,7 @@ import "../components/Main.css"
 
 function Main(props) {
 
-    const {filteredPosts, likeImage, addPost, setSearchItem} = props
+    const {filteredPosts, likeImage, addPost, setSearchItem, addComment} = props
     
     return (
 
@@ -26,7 +26,9 @@ function Main(props) {
                     <ImageCard 
                         key = {post.id}
                         post = {post}
+
                         likeImage = {likeImage}
+                        addComment = {addComment}
                     />
                     
                 )}

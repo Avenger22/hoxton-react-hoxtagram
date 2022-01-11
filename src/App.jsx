@@ -7,7 +7,6 @@ import Main from './components/Main'
 import ImageLogo from './components/ImageLogo'
 // #endregion
 
-
 function App () {
 
   // #region 'State Object'
@@ -25,9 +24,7 @@ function App () {
   // #endregion
 
 
-  // #region 'APP control and conditional flow'
-  let filteredPosts = posts
-
+  // #region 'Helper Functions'
   function likeImage(post) {
 
     // update the server
@@ -57,13 +54,14 @@ function App () {
     }
     
     fetch('http://localhost:8000/images', {
-      method: 'POST',
-      headers: {
-      'Content-Type': 'application/json'
-    },
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+      },
 
-    body: JSON.stringify(newPost)
+      body: JSON.stringify(newPost)
     })
+
     .then(responseItem => responseItem.json())
     .then(responseJsonArray => {
 
@@ -82,11 +80,43 @@ function App () {
     )
 
   }
+
+  function addComment(formComment, post) {
+
+    const newComment = {
+      comments: [formComment]
+    }
+    
+    fetch(`http://localhost:8000/images/{post.id}/comments/`, {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json'
+      },
+
+      body: JSON.stringify(newComment)
+    })
+
+    .then(responseItem => responseItem.json())
+    .then(responseJsonArray => {
+
+      // response will contain the new item with the ID
+      const updatedComments = [...post.comments, responseJsonArray]
+      setPosts(updatedComments)
+
+    })
+
+  }
   // #endregion
+
+
+  // #region 'App Conditionals'
+  let filteredPosts = posts
 
   if (searchItem !== '') {
     filteredPosts = searchPosts(filteredPosts)
   }
+  // #endregion
+
 
   //#region 'Returning HTML of the APP'
   return (
@@ -98,8 +128,11 @@ function App () {
       <Main 
         filteredPosts = {filteredPosts}
         likeImage = {likeImage}
+        
         addPost = {addPost}
         setSearchItem = {setSearchItem}
+
+        addComment = {addComment}
       />
       
     </div>

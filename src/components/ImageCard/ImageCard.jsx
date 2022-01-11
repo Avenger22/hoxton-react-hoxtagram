@@ -6,7 +6,7 @@ import "../ImageCard/ImageCard.css"
 
 function ImageCard(props) {
 
-    const {post, likeImage} = props  
+    const {post, likeImage, addComment} = props  
 
     return (
 
@@ -28,6 +28,8 @@ function ImageCard(props) {
 
             <Comments 
                 postComments = {post.comments}
+                addComment = {addComment}
+                post = {post}
             />
 
         </article>
