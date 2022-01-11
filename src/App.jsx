@@ -62,6 +62,21 @@ function App () {
 
   }
 
+  // function addCommentFromServer(imageIdParam, contentParam) {
+
+  //   return fetch(`http://localhost:8000/comments`, {
+      
+  //       method: 'POST',
+  //       headers: {
+  //           'Content-Type': 'application/json'
+  //       },
+
+  //       body: JSON.stringify({ content: contentParam, imageId: imageIdParam })
+
+  //   }
+
+  // )}
+
   function deleteCommentFromServer(comment) {
     
     fetch(`http://localhost:8000/comments/${comment.id}`, {
@@ -97,7 +112,7 @@ function App () {
     }
     
     newPostInServer(newPost).then(responseJsonArray => {
-      
+
       const updatedPosts = [...posts, responseJsonArray]
       setPosts(updatedPosts)
 
@@ -107,15 +122,14 @@ function App () {
 
   function deletePost(post) {
 
-    deletePostFromServer(post)
+    deletePostFromServer(post.id)
 
-    let updatedPosts = JSON.parse(JSON.stringify(posts));
+    let updatedPosts = JSON.parse(JSON.stringify(filteredPosts));
 
-    updatedPosts = updatedPosts.filter(post => post.id !== post.id)
+    updatedPosts = updatedPosts.filter(image => image.id !== post.id)
     setPosts(updatedPosts);
 
   }
-
 
   function searchPosts(filteredPosts) {
 
@@ -159,6 +173,22 @@ function App () {
 
   // }
 
+  
+  // function addComment(imageIdParam, contentParam) {
+
+  //   return fetch(`http://localhost:8000/comments`, {
+      
+  //     method: 'POST',
+  //     headers: {
+  //         'Content-Type': 'application/json'
+  //     },
+
+  //     body: JSON.stringify({ content: contentParam, imageId: imageIdParam })
+
+  //   }) 
+
+  // }
+
   function deleteComment(comment) {
 
     deleteCommentFromServer(comment) //delete from the server
@@ -193,13 +223,13 @@ function App () {
       <ImageLogo />
 
       <Main 
+        setPosts = {setPosts}
         filteredPosts = {filteredPosts}
         likeImage = {likeImage}
         
         addPost = {addPost}
         setSearchItem = {setSearchItem}
 
-        // addComment = {addComment}
         deleteComment = {deleteComment}
         deletePost = {deletePost}
       />

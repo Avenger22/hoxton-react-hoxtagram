@@ -5,8 +5,8 @@ import "../components/Main.css"
 
 function Main(props) {
 
-    const {filteredPosts, likeImage, addPost, setSearchItem, 
-        addComment, deleteComment, deletePost} = props
+    const {setPosts, filteredPosts, likeImage, addPost, setSearchItem, 
+        deleteComment, deletePost} = props
     
     return (
 
@@ -21,33 +21,14 @@ function Main(props) {
             />
 
             <ArticleWrapperImages 
+                setPosts = {setPosts}
                 filteredPosts = {filteredPosts}
+                
                 likeImage = {likeImage}
-                addComment = {addComment}
-
                 deleteComment = {deleteComment}
                 deletePost = {deletePost}
             />
 
-            {/* <div className='article-wrapper'>
-
-                {filteredPosts.map(post => 
-
-                    <ImageCard 
-                        key = {post.id}
-                        post = {post}
-
-                        likeImage = {likeImage}
-                        addComment = {addComment}
-
-                        deleteComment = {deleteComment}
-                        deletePost = {deletePost}
-                    />
-                    
-                )}
-
-            </div> */}
-            
         </section>
 
     )
