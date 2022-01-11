@@ -174,20 +174,20 @@ function App () {
   // }
 
   
-  function addComment(imageIdParam, contentParam) {
+  // function addComment(imageIdParam, contentParam) {
 
-    return fetch(`http://localhost:8000/comments`, {
+  //   return fetch(`http://localhost:8000/comments`, {
       
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json'
-      },
+  //     method: 'POST',
+  //     headers: {
+  //         'Content-Type': 'application/json'
+  //     },
 
-      body: JSON.stringify({ content: contentParam, imageId: imageIdParam })
+  //     body: JSON.stringify({ content: contentParam, imageId: imageIdParam })
 
-    }) 
+  //   }) 
 
-  }
+  // }
 
   function deleteComment(comment) {
 
@@ -230,7 +230,6 @@ function App () {
         addPost = {addPost}
         setSearchItem = {setSearchItem}
 
-        addComment = {addComment}
         deleteComment = {deleteComment}
         deletePost = {deletePost}
       />

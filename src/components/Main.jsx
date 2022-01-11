@@ -6,7 +6,7 @@ import "../components/Main.css"
 function Main(props) {
 
     const {setPosts, filteredPosts, likeImage, addPost, setSearchItem, 
-        addComment, deleteComment, deletePost} = props
+        deleteComment, deletePost} = props
     
     return (
 
@@ -25,8 +25,6 @@ function Main(props) {
                 filteredPosts = {filteredPosts}
                 
                 likeImage = {likeImage}
-                addComment = {addComment}
-
                 deleteComment = {deleteComment}
                 deletePost = {deletePost}
             />

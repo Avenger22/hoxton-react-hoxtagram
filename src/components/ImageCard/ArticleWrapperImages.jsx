@@ -2,7 +2,7 @@ import ImageCard from './ImageCard'
 
 function ArticleWrapperImages(props) {
 
-    const {setPosts, filteredPosts, likeImage, addComment, deleteComment, deletePost} = props  
+    const {setPosts, filteredPosts, likeImage, deleteComment, deletePost} = props  
 
     return (
 
@@ -18,8 +18,6 @@ function ArticleWrapperImages(props) {
                     post = {post}
 
                     likeImage = {likeImage}
-                    addComment = {addComment}
-
                     deleteComment = {deleteComment}
                     deletePost = {deletePost}
                 />

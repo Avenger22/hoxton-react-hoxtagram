@@ -3,7 +3,7 @@ import "../ImageCard/Comments.css"
 
 function Comment(props) {
 
-    const  {addComment, post,deleteComment, comment} = props
+    const  {post,deleteComment, comment} = props
 
     return (
 

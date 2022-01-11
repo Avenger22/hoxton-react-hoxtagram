@@ -3,9 +3,22 @@ import "../ImageCard/Comments.css"
 
 function Comments(props) {
     
-    const {filteredPosts, setPosts, postComments, addComment, post, deleteComment} = props
+    const {filteredPosts, setPosts, postComments, post, deleteComment} = props
     
-    addComment().then(res => res.json())
+    function addComment(imageIdParam, contentParam) {
+
+        return fetch(`http://localhost:8000/comments`, {
+          
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+    
+          body: JSON.stringify({ content: contentParam, imageId: imageIdParam })
+    
+        }).then(res => res.json())
+    
+    }
     
     return (
 
