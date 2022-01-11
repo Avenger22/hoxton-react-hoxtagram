@@ -3,12 +3,12 @@ import "../ImageCard/Comments.css"
 
 function Comment(props) {
 
-    const  {deleteComment, comment} = props
+    const  {addComment, post,deleteComment, comment} = props
 
     return (
 
         <li>
-            
+
             {comment.content}
 
             <button onClick={function() {

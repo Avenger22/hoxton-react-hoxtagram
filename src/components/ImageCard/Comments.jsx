@@ -3,7 +3,9 @@ import "../ImageCard/Comments.css"
 
 function Comments(props) {
     
-    const {postComments, addComment, post, deleteComment} = props
+    const {filteredPosts, setPosts, postComments, addComment, post, deleteComment} = props
+    
+    addComment().then(res => res.json())
     
     return (
 
@@ -11,12 +13,23 @@ function Comments(props) {
             
             <form 
                 className='comment-add-form'
+                
                 onSubmit={e => {
-                    e.preventDefault()
-                    const comment = e.target.addComment.value
 
-                    console.log(comment)
-                    // addComment(comment, post.id, post)
+                    e.preventDefault()
+                    const commentContent = e.target.addComment.value
+
+                    console.log(commentContent)
+
+                    addComment(post.id, commentContent).then(res => {
+                        const updatedPosts = [...filteredPosts];
+                        let index = updatedPosts.findIndex(item => item.id === post.id)
+                        
+                        updatedPosts[index].comments.push(res)
+                        setPosts(updatedPosts)
+                    });
+
+                    e.target.reset();
                 }}
             >
 
@@ -33,7 +46,11 @@ function Comments(props) {
                 <Comment 
                     key = {`post with id: ${comment.id}`}
                     deleteComment = {deleteComment}
+
                     comment = {comment}
+                    addComment = {addComment}
+
+                    post = {post}
                 />
                 
             )}

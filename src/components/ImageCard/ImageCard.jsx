@@ -7,7 +7,7 @@ import "../ImageCard/ImageCard.css"
 
 function ImageCard(props) {
 
-    const {post, likeImage, addComment, deleteComment, deletePost} = props  
+    const {setPosts, post, likeImage, filteredPosts, addComment, deleteComment, deletePost} = props  
 
     return (
 
@@ -33,6 +33,9 @@ function ImageCard(props) {
             />
 
             <Comments 
+                setPosts = {setPosts}
+                filteredPosts = {filteredPosts}
+                
                 postComments = {post.comments}
                 addComment = {addComment}
 
