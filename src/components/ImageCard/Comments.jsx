@@ -62,7 +62,6 @@ function Comments(props) {
 
                     comment = {comment}
                     addComment = {addComment}
-
                     post = {post}
                 />
                 

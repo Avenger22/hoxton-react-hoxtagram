@@ -122,11 +122,11 @@ function App () {
 
   function deletePost(post) {
 
-    deletePostFromServer(post)
+    deletePostFromServer(post.id)
 
-    let updatedPosts = JSON.parse(JSON.stringify(posts));
+    let updatedPosts = JSON.parse(JSON.stringify(filteredPosts));
 
-    updatedPosts = updatedPosts.filter(post => post.id !== post.id)
+    updatedPosts = updatedPosts.filter(image => image.id !== post.id)
     setPosts(updatedPosts);
 
   }
