@@ -7,10 +7,12 @@ import Main from './components/Main'
 import ImageLogo from './components/ImageLogo'
 // #endregion
 
+
 function App () {
 
   // #region 'State Object'
   const [posts, setPosts] = useState([]) //we let it void because we need to fetch it form server JSON file
+  const [searchItem, setSearchItem] = useState('')
   // #endregion
 
 
@@ -72,8 +74,19 @@ function App () {
     })
 
   }
+
+  function searchPosts(filteredPosts) {
+
+    return filteredPosts.filter(post =>
+      post.title.toLowerCase().includes(searchItem.toLowerCase())
+    )
+
+  }
   // #endregion
 
+  if (searchItem !== '') {
+    filteredPosts = searchPosts(filteredPosts)
+  }
 
   //#region 'Returning HTML of the APP'
   return (
@@ -86,6 +99,7 @@ function App () {
         filteredPosts = {filteredPosts}
         likeImage = {likeImage}
         addPost = {addPost}
+        setSearchItem = {setSearchItem}
       />
       
     </div>
