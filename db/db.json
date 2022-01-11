@@ -3,14 +3,37 @@
     {
       "id": 1,
       "title": "Coder dog",
-      "likes": 7,
+      "likes": 18,
       "image": "./assets/coder-dog.png"
     },
     {
       "id": 2,
       "title": "Coder cats",
-      "likes": 5,
+      "likes": 11,
       "image": "./assets/coder-cat.jpeg"
+    },
+    {
+      "title": "Coder Coding",
+      "image": "./assets/js-coder.webp",
+      "likes": "Nope",
+      "comments": "15",
+      "id": 3
+    },
+    {
+      "title": "Coderrr",
+      "image": "./assets/js-coder.webp",
+      "likes": "22222",
+      "comments": "lololo",
+      "id": 4
+    },
+    {
+      "title": "coder coding js",
+      "image": "./assets/js-coder.webp",
+      "likes": "15",
+      "comments": [
+        "Nope"
+      ],
+      "id": 5
     }
   ],
   "comments": [

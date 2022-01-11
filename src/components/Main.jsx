@@ -4,13 +4,15 @@ import "../components/Main.css"
 
 function Main(props) {
 
-    const {filteredPosts} = props
+    const {filteredPosts, likeImage, addPost} = props
     
     return (
 
         <section className="image-container">
 
-            <PostForm />
+            <PostForm 
+                addPost = {addPost}
+            />
 
             <div className='article-wrapper'>
 
@@ -19,6 +21,7 @@ function Main(props) {
                     <ImageCard 
                         key = {post.id}
                         post = {post}
+                        likeImage = {likeImage}
                     />
                     
                 )}
